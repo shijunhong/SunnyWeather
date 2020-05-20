@@ -1,5 +1,4 @@
 package com.sunnyweather.android.ui.weather
-
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -49,7 +48,6 @@ class WeatherActivity : AppCompatActivity() {
             }
         })
         viewModel.refreshWeather(viewModel.locationLng,viewModel.locationLat)
-
     }
 
     private fun showWeatherInfo(weather: Weather) {

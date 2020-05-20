@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 import java.lang.RuntimeException
 import androidx.lifecycle.liveData
+import com.sunnyweather.android.logic.dao.PlaceDao
 import com.sunnyweather.android.logic.model.Place
 import com.sunnyweather.android.logic.model.Weather
 import kotlinx.coroutines.async
@@ -13,6 +14,13 @@ import kotlinx.coroutines.coroutineScope
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
+
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() =  PlaceDao.isPlaceSaved()
+
 
     fun searchPlaces(query: String) = fire(Dispatchers.IO) {
         val placeResponse = SunnyWeatherNetwork.searchPlaces(query)
