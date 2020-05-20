@@ -1,33 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/switchRefresh"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     tools:context=".ui.weather.WeatherActivity">
-    <ScrollView
-        android:scrollbars="none"
-        android:overScrollMode="never"
-        android:visibility="invisible"
-        android:id="@+id/weatherLayout"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
+        android:id="@+id/switchRefresh"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:visibility="invisible"
+            android:id="@+id/weatherLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/now"/>
+                <include layout="@layout/forecast"/>
+                <include layout="@layout/life_index"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <FrameLayout
+        android:background="@color/colorPrimary"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_gravity= "start"
         android:layout_height="match_parent">
 
+        <fragment
+            android:name="com.sunnyweather.android.ui.place.PlaceFragment"
+            android:id="@+id/placeFragment"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <include layout="@layout/now"/>
-        <include layout="@layout/forecast"/>
-        <include layout="@layout/life_index"/>
-
-    </LinearLayout>
-    </ScrollView>
+    </FrameLayout>
 
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
